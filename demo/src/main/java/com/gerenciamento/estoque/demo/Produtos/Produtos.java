@@ -26,4 +26,9 @@ public class Produtos {
     @Column(unique = false, nullable = false)
     int quantidade;
 
+    public Produtos(String nome, String descricao, int quantidade) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.quantidade = quantidade;
+    }
 }

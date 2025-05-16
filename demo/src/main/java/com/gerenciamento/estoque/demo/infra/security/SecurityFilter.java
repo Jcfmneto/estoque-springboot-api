@@ -27,6 +27,13 @@ public class SecurityFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         var token = recuperatoken(request);
+
+        String path = request.getRequestURI();
+        if (path.startsWith("/auth/login") || path.startsWith("/auth/register")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         if (token != null) {
             var subject = jwtService.verifyToken(token);
             UserDetails user = userRepository.findByEmail(subject).orElse(null);
