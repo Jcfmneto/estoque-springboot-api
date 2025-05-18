@@ -5,12 +5,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
 public class Produtos {
 
     @Id
@@ -26,9 +28,9 @@ public class Produtos {
     @Column(unique = false, nullable = false)
     int quantidade;
 
-    public Produtos(String nome, String descricao, int quantidade) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.quantidade = quantidade;
+    public Produtos(ProdutoDTO produtoDTO) {
+        this.nome = produtoDTO.nome();
+        this.descricao = produtoDTO.descricao();
+        this.quantidade = produtoDTO.quantidade();
     }
 }
