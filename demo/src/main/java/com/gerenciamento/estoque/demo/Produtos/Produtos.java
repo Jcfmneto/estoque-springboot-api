@@ -1,6 +1,7 @@
 package com.gerenciamento.estoque.demo.Produtos;
 
 
+import com.gerenciamento.estoque.demo.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,20 +18,27 @@ public class Produtos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    private long id;
 
     @Column(unique = true, nullable = false, length = 100)
-    String nome;
+    private String nome;
 
-    @Column(unique = false, nullable = false,  length = 200)
-    String descricao;
+    @Column(unique = false, nullable = true,  length = 200)
+    private String descricao;
 
     @Column(unique = false, nullable = false)
-    int quantidade;
+    private int quantidade;
 
-    public Produtos(ProdutoDTO produtoDTO) {
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private User usuario;
+
+
+
+    public Produtos(ProdutoDTO produtoDTO, User usuario) {
         this.nome = produtoDTO.nome();
         this.descricao = produtoDTO.descricao();
         this.quantidade = produtoDTO.quantidade();
+        this.usuario = usuario;
     }
 }

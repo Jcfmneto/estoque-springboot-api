@@ -1,5 +1,6 @@
 package com.gerenciamento.estoque.demo.Produtos;
 
+import com.gerenciamento.estoque.demo.user.User;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -11,6 +12,9 @@ public record ProdutoDTO(
         String descricao,
 
         @NotNull
-        int quantidade
+        int quantidade,
+
+        @NotNull
+        User usuario
 ) {
 }

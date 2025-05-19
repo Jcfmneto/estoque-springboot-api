@@ -2,6 +2,7 @@ package com.gerenciamento.estoque.demo.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,11 +17,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @EqualsAndHashCode.Include
+    private Long id;
 
     @Column(unique = true, nullable = false, length = 50)
     private String email;
