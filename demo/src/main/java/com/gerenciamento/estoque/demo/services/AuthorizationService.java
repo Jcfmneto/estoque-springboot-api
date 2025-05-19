@@ -1,5 +1,5 @@
 package com.gerenciamento.estoque.demo.services;
-import com.gerenciamento.estoque.demo.repositories.UserRepository;
+import com.gerenciamento.estoque.demo.user.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

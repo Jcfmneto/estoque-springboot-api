@@ -1,6 +1,6 @@
 package com.gerenciamento.estoque.demo.infra.security;
 
-import com.gerenciamento.estoque.demo.repositories.UserRepository;
+import com.gerenciamento.estoque.demo.user.repository.UserRepository;
 import com.gerenciamento.estoque.demo.services.JWTService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

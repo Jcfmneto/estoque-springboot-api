@@ -1,4 +1,4 @@
-package com.gerenciamento.estoque.demo.repositories;
+package com.gerenciamento.estoque.demo.produtos.repository;
 
 import com.gerenciamento.estoque.demo.produtos.model.Produtos;
 import org.springframework.data.domain.Page;

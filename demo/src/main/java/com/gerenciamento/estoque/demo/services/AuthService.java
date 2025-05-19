@@ -1,6 +1,6 @@
 package com.gerenciamento.estoque.demo.services;
 
-import com.gerenciamento.estoque.demo.repositories.UserRepository;
+import com.gerenciamento.estoque.demo.user.repository.UserRepository;
 import com.gerenciamento.estoque.demo.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;

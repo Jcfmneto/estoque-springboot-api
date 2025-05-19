@@ -1,4 +1,4 @@
-package com.gerenciamento.estoque.demo.repositories;
+package com.gerenciamento.estoque.demo.user.repository;
 
 import com.gerenciamento.estoque.demo.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;

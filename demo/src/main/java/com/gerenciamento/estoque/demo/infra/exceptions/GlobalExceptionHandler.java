@@ -14,6 +14,11 @@ import java.util.Map;
     @ControllerAdvice
     public class GlobalExceptionHandler {
 
+        @ExceptionHandler(EstoqueException.class)
+        public ResponseEntity<Object> handleEstoqueException(EstoqueException ex) {
+            return buildResponseEntity(HttpStatus.BAD_REQUEST, ex.getMessage());
+        }
+
         @ExceptionHandler(EntityNotFoundException.class)
         public ResponseEntity<Object> handleEntityNotFound(EntityNotFoundException ex) {
             return buildResponseEntity(HttpStatus.NOT_FOUND, ex.getMessage());

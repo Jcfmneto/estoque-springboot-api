@@ -1,17 +1,22 @@
 package com.gerenciamento.estoque.demo.services;
 
+import com.gerenciamento.estoque.demo.estoque.dto.MovimentacaoEstoqueDTO;
+import com.gerenciamento.estoque.demo.estoque.dto.RespostaMovimentacaoDTO;
+import com.gerenciamento.estoque.demo.estoque.model.TipoMovimentacao;
+import com.gerenciamento.estoque.demo.infra.exceptions.EstoqueException;
 import com.gerenciamento.estoque.demo.produtos.dto.ProdutoDTO;
 import com.gerenciamento.estoque.demo.produtos.dto.ProdutoSalvoDTO;
 import com.gerenciamento.estoque.demo.produtos.dto.ProdutosListagemDTO;
 import com.gerenciamento.estoque.demo.produtos.dto.ProdutosPaginadosDTO;
 import com.gerenciamento.estoque.demo.produtos.model.Produtos;
-import com.gerenciamento.estoque.demo.repositories.ProdutosRepository;
+import com.gerenciamento.estoque.demo.produtos.repository.ProdutosRepository;
 import com.gerenciamento.estoque.demo.user.model.User;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -19,8 +24,11 @@ public class ProdutosService {
 
     private final ProdutosRepository produtosRepository;
 
-    public ProdutosService(ProdutosRepository produtosRepository) {
+    private final EstoqueService estoqueService;
+
+    public ProdutosService(ProdutosRepository produtosRepository, EstoqueService estoqueService) {
         this.produtosRepository = produtosRepository;
+        this.estoqueService = estoqueService;
     }
 
     public ProdutoSalvoDTO cadastrarProduto(ProdutoDTO produtoDTO, User usuario) {
@@ -62,9 +70,60 @@ public class ProdutosService {
         );
     }
 
+    public RespostaMovimentacaoDTO entradaEstoque(MovimentacaoEstoqueDTO dto, Long id, User usuario) {
+        Produtos produto = produtosRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Produto não encontrado"));
+        validarPropriedadeDoProduto(produto, usuario);
+        if(dto.quantidade() <= 0){
+            throw new EstoqueException("Adicione um valor válido");
+        }
+            produto.setQuantidade(produto.getQuantidade() + dto.quantidade());
+            produtosRepository.save(produto);
+
+            estoqueService.registrarMovimentacao(produto, dto.quantidade(), dto.motivo(), TipoMovimentacao.ENTRADA);
+
+        return new RespostaMovimentacaoDTO(
+                "Entrada realizada com sucesso",
+                produto.getId(),
+                produto.getNome(),
+                produto.getQuantidade(),
+                dto.quantidade(),
+                dto.motivo(),
+                TipoMovimentacao.ENTRADA,
+                LocalDate.now()
+        );
+
+    }
+
+    public RespostaMovimentacaoDTO baixaEstoque(MovimentacaoEstoqueDTO dto, Long id, User usuario) {
+        Produtos produto = produtosRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Produto não encontrado"));
+        validarPropriedadeDoProduto(produto, usuario);
+        if(dto.quantidade() > produto.getQuantidade()){
+            throw new EstoqueException("Adicione um valor válido");
+        }
+
+        produto.setQuantidade(produto.getQuantidade() - dto.quantidade());
+        produtosRepository.save(produto);
+
+        estoqueService.registrarMovimentacao(produto, dto.quantidade(),  dto.motivo(), TipoMovimentacao.SAIDA);
+
+        return new RespostaMovimentacaoDTO(
+                "Saida realizada com sucesso",
+                produto.getId(),
+                produto.getNome(),
+                produto.getQuantidade(),
+                dto.quantidade(),
+                dto.motivo(),
+                TipoMovimentacao.SAIDA,
+                LocalDate.now()
+        );
+    }
+
     private void validarPropriedadeDoProduto(Produtos produto, User usuario) {
         if (!usuario.getId().equals(produto.getUsuario().getId())) {
             throw new AccessDeniedException("Acesso negado");
         }
     }
+
 }

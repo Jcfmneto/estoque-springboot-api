@@ -28,7 +28,8 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/register", "/auth/login").permitAll()
+                        .requestMatchers("/auth/register", "/auth/login",
+                                "/swagger-ui.html", "/v3/**", "/swagger-ui/**").permitAll()
                         .anyRequest().authenticated()
                 );
         http.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
