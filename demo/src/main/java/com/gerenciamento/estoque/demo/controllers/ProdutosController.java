@@ -3,6 +3,7 @@ package com.gerenciamento.estoque.demo.controllers;
 
 import com.gerenciamento.estoque.demo.produtos.dto.ProdutoDTO;
 import com.gerenciamento.estoque.demo.produtos.dto.ProdutoSalvoDTO;
+import com.gerenciamento.estoque.demo.produtos.dto.ProdutosPaginadosDTO;
 import com.gerenciamento.estoque.demo.services.ProdutosService;
 import com.gerenciamento.estoque.demo.user.model.User;
 import org.springframework.http.HttpStatus;
@@ -41,9 +42,9 @@ public class ProdutosController {
         return ResponseEntity.status(HttpStatus.OK).body(produtoSalvo);
     }
     @GetMapping()
-        public ResponseEntity<?> listarProdutos(@RequestParam int pagina,
-                                                @RequestParam int itens,
-                                                @AuthenticationPrincipal User usuario) {
+        public ResponseEntity<ProdutosPaginadosDTO> listarProdutos(@RequestParam(defaultValue = "0") int pagina,
+                                                                   @RequestParam(defaultValue = "0") int itens,
+                                                                   @AuthenticationPrincipal User usuario) {
         var produtosPaginados = produtosService.listarProdutos(pagina, itens, usuario);
         return  ResponseEntity.status(HttpStatus.OK).body(produtosPaginados);
     }
