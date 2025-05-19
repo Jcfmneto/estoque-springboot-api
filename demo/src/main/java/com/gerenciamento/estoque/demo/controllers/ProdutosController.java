@@ -43,7 +43,7 @@ public class ProdutosController {
     }
     @GetMapping()
         public ResponseEntity<ProdutosPaginadosDTO> listarProdutos(@RequestParam(defaultValue = "0") int pagina,
-                                                                   @RequestParam(defaultValue = "0") int itens,
+                                                                   @RequestParam(defaultValue = "10") int itens,
                                                                    @AuthenticationPrincipal User usuario) {
         var produtosPaginados = produtosService.listarProdutos(pagina, itens, usuario);
         return  ResponseEntity.status(HttpStatus.OK).body(produtosPaginados);
