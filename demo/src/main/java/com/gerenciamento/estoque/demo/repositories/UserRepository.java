@@ -1,6 +1,6 @@
 package com.gerenciamento.estoque.demo.repositories;
 
-import com.gerenciamento.estoque.demo.user.User;
+import com.gerenciamento.estoque.demo.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;

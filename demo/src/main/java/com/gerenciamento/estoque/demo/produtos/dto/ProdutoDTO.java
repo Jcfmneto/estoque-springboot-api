@@ -1,6 +1,6 @@
-package com.gerenciamento.estoque.demo.Produtos;
+package com.gerenciamento.estoque.demo.produtos.dto;
 
-import com.gerenciamento.estoque.demo.user.User;
+import com.gerenciamento.estoque.demo.user.model.User;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

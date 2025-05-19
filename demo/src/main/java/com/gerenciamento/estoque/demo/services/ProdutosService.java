@@ -1,8 +1,12 @@
 package com.gerenciamento.estoque.demo.services;
 
-import com.gerenciamento.estoque.demo.Produtos.*;
+import com.gerenciamento.estoque.demo.produtos.dto.ProdutoDTO;
+import com.gerenciamento.estoque.demo.produtos.dto.ProdutoSalvoDTO;
+import com.gerenciamento.estoque.demo.produtos.dto.ProdutosListagemDTO;
+import com.gerenciamento.estoque.demo.produtos.dto.ProdutosPaginadosDTO;
+import com.gerenciamento.estoque.demo.produtos.model.Produtos;
 import com.gerenciamento.estoque.demo.repositories.ProdutosRepository;
-import com.gerenciamento.estoque.demo.user.User;
+import com.gerenciamento.estoque.demo.user.model.User;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.access.AccessDeniedException;

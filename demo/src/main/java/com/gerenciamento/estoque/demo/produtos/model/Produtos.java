@@ -1,7 +1,8 @@
-package com.gerenciamento.estoque.demo.Produtos;
+package com.gerenciamento.estoque.demo.produtos.model;
 
 
-import com.gerenciamento.estoque.demo.user.User;
+import com.gerenciamento.estoque.demo.produtos.dto.ProdutoDTO;
+import com.gerenciamento.estoque.demo.user.model.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

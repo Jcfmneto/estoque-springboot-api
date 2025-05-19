@@ -1,4 +1,4 @@
-package com.gerenciamento.estoque.demo.user;
+package com.gerenciamento.estoque.demo.user.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

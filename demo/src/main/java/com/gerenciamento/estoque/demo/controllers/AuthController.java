@@ -2,9 +2,9 @@ package com.gerenciamento.estoque.demo.controllers;
 
 
 import com.gerenciamento.estoque.demo.services.AuthService;
-import com.gerenciamento.estoque.demo.user.LoginDTO;
-import com.gerenciamento.estoque.demo.user.LoginResponseDto;
-import com.gerenciamento.estoque.demo.user.RegisterDTO;
+import com.gerenciamento.estoque.demo.user.dto.LoginDTO;
+import com.gerenciamento.estoque.demo.user.dto.LoginResponseDto;
+import com.gerenciamento.estoque.demo.user.dto.RegisterDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

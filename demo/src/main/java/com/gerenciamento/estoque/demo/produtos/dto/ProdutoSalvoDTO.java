@@ -1,4 +1,6 @@
-package com.gerenciamento.estoque.demo.Produtos;
+package com.gerenciamento.estoque.demo.produtos.dto;
+
+import com.gerenciamento.estoque.demo.produtos.model.Produtos;
 
 public record ProdutoSalvoDTO(Long id, String nome, String descricao, int quantidade, Long usuarioId) {
 

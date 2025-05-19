@@ -1,10 +1,10 @@
 package com.gerenciamento.estoque.demo.controllers;
 
 
-import com.gerenciamento.estoque.demo.Produtos.ProdutoDTO;
-import com.gerenciamento.estoque.demo.Produtos.ProdutoSalvoDTO;
+import com.gerenciamento.estoque.demo.produtos.dto.ProdutoDTO;
+import com.gerenciamento.estoque.demo.produtos.dto.ProdutoSalvoDTO;
 import com.gerenciamento.estoque.demo.services.ProdutosService;
-import com.gerenciamento.estoque.demo.user.User;
+import com.gerenciamento.estoque.demo.user.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

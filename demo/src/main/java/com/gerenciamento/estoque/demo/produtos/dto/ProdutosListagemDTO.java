@@ -1,6 +1,6 @@
-package com.gerenciamento.estoque.demo.Produtos;
+package com.gerenciamento.estoque.demo.produtos.dto;
 
-import java.util.List;
+import com.gerenciamento.estoque.demo.produtos.model.Produtos;
 
 public record ProdutosListagemDTO(Long id, String nome, String descricao, int quantidade, Long usuarioId) {
 

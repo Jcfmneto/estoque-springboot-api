@@ -1,4 +1,4 @@
-package com.gerenciamento.estoque.demo.Produtos;
+package com.gerenciamento.estoque.demo.produtos.dto;
 
 import java.util.List;
 
