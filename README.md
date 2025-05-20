@@ -1,6 +1,6 @@
 # 📦 Sistema de Gerenciamento de Estoque
 
-Este é um sistema completo de gerenciamento de estoque desenvolvido com **Spring Boot**, que inclui autenticação via **JWT**, persistência com **MySQL**, documentação automática com **Swagger (SpringDoc)** e arquitetura limpa baseada em domínios (DDD-like).
+Este é um sistema completo de gerenciamento de estoque desenvolvido com **Spring Boot**, que inclui autenticação via **JWT**, persistência com **MySQL**, documentação automática com **Swagger (SpringDoc)**
 
 ---
 
@@ -41,7 +41,7 @@ docker run --name estoque-mysql \
 💡 Certifique-se de que o application.properties está configurado com essas credenciais.
 
 🚀 Como Executar o Projeto
-bash
+```bash
 Copiar
 Editar
 # Clone o repositório
@@ -50,12 +50,13 @@ cd projeto-estoque/demo
 
 # Execute o projeto
 ./mvnw spring-boot:run
-A aplicação estará disponível em: http://localhost:8080
+```
 
+A aplicação estará disponível em: http://localhost:8080
 Documentação Swagger: http://localhost:8080/swagger-ui.html
 
 🗂️ Estrutura do Projeto
-bash
+```bash
 Copiar
 Editar
 com.gerenciamento.estoque
@@ -75,7 +76,7 @@ com.gerenciamento.estoque
 ├── services                # Regras de negócio reutilizáveis
 ├── infra                   # Segurança, configuração e exceções
 └── DemoApplication         # Classe principal
-
+```
 🔒 Segurança
 Endpoint de login: POST /auth/login
 
