@@ -86,6 +86,8 @@ JWT retornado no login deve ser enviado no header:
 
 Authorization: Bearer <token>
 
+---
+
 ✍️ Autor
 Desenvolvido por Júlio Cesar França de Moura Neto
 🔗 LinkedIn • https://www.linkedin.com/in/juliomouraneto/
